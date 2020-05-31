@@ -17,7 +17,7 @@ USE `universidad`;
 
 -- Volcando estructura para tabla universidad.alumno
 CREATE TABLE IF NOT EXISTS `alumno` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(30) DEFAULT NULL,
   `fecNac` datetime DEFAULT NULL,
   `activo` tinyint(4) NOT NULL DEFAULT '0',
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `alumno` (
 
 -- Volcando estructura para tabla universidad.cursada
 CREATE TABLE IF NOT EXISTS `cursada` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `idAlumno` int(11) NOT NULL,
   `idMateria` int(11) NOT NULL,
   `nota` int(11) NOT NULL,
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `cursada` (
 
 -- Volcando estructura para tabla universidad.materia
 CREATE TABLE IF NOT EXISTS `materia` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
