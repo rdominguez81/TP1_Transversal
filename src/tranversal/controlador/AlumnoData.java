@@ -21,12 +21,9 @@ import tranversal.modelo.Alumno;
 public class AlumnoData {
     private Connection con;
 
-    public AlumnoData(Conexion conexion) {
-        try {
-            con = conexion.getConexion();
-        } catch (SQLException ex) {
-            System.out.println("Error al abrir al obtener la conexion");
-        }
+    public AlumnoData(Conexion conexion) 
+    {
+        con = conexion.getConexion();
     }
     
     

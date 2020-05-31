@@ -1,40 +1,50 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package tranversal.modelo;
 
-public class Materia {
-    int id;
-    String nombre;
+/**
+ *
+ * @author Usuario
+ */
+public class Materia 
+{
+    private int id = -1;
+    private String nombre;
 
-    public Materia(int id, String nombre) {
+    public Materia(String nombre) 
+    {
         this.id = id;
         this.nombre = nombre;
     }
+    
+    public Materia(){}
 
-    public Materia(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public Materia() {
-    }
-
-    public int getId() {
+    public int getId() 
+    {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(int id) 
+    {
         this.id = id;
     }
 
-    public String getNombre() {
+    public String getNombre() 
+    {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    public void setNombre(String nombre) 
+    {
         this.nombre = nombre;
     }
 
     @Override
-    public String toString() {
-        return "Materia" + "id:" + id + " nombre: " + nombre;
+    public String toString(){
+    
+        return id+"-"+nombre;
     }
 }
