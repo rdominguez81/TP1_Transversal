@@ -46,7 +46,6 @@ public class MateriaData
             if (rs.next()) 
             {
                 materia.setId(rs.getInt(1));
-                materia.setId(rs.getInt(1));
                 System.out.println("Se insertó la Materia "+materia.getNombre()+" de forma correcta!");                    
             } 
             else 
@@ -134,7 +133,7 @@ public class MateriaData
             }
             else
             {
-                System.out.println("La materia a eliminar no existía en la BD!");
+                System.out.println("La materia a eliminar no se encontró en la BD!");
             }          
             
             statement.close();
@@ -162,7 +161,7 @@ public class MateriaData
             }
             else
             {
-                System.out.println("La materia a actualizar no existía en la BD!");
+                System.out.println("La materia a actualizar no se encontró en la BD!");
             }        
           
             statement.close();
