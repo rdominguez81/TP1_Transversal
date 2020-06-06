@@ -78,21 +78,21 @@ public class CursadaData
             ResultSet resultSet = statement.executeQuery();
             
             Cursada cursada;
-            AlumnoData ad = null;
-            MateriaData md = null;
+            AlumnoData ad = new AlumnoData(con);
+            MateriaData md = new MateriaData(con);
             //Alumno a2 = new Alumno("Rodri", LocalDate.now(), true);
-            Materia m2 = new Materia("Mate");
+            //Materia m2 = new Materia("Mate");
             while(resultSet.next())
             {
                 cursada = new Cursada();
                 cursada.setId(resultSet.getInt("id"));
                 
-                Alumno a = ad.buscarAlumno(resultSet.getInt(1));
+                Alumno a = ad.buscarAlumno(resultSet.getInt("idAlumno"));
                 //Alumno a = a2;
                 cursada.setAlumno(a);
                 
-                //Materia m = md.buscarMateria(resultSet.getInt("id"));
-                Materia m = m2;
+                Materia m = md.buscarMateria(resultSet.getInt("idMateria"));
+                //Materia m = m2;
                 cursada.setMateria(m);
                 
                 cursada.setNota(resultSet.getInt("nota"));              

@@ -28,7 +28,10 @@ public class MateriaData
     public MateriaData(Conexion conexion) 
     {
         con = conexion.getConexion();
-    }    
+    }
+    public MateriaData(Connection con){
+        this.con = con;
+    }
     
     public void guardarMateria(Materia materia)
     {
