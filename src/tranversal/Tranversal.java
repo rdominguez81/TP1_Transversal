@@ -40,10 +40,12 @@ public class Tranversal {
         Alumno alumno = new Alumno("Rodrigo Dominguez",LocalDate.of(1981, Month.AUGUST, 15),true);
         Alumno alumno2 = new Alumno("Ignacio Havelka",LocalDate.now(),true);
         Alumno alumno3 = new Alumno("Pablo Poder",LocalDate.now(),true);
+        Alumno alumno4 = new Alumno("Sebastian Spartano",LocalDate.of(1995, Month.OCTOBER, 14),true);
         AlumnoData ad = new AlumnoData(con);
         ad.guardarAlumno(alumno);
         ad.guardarAlumno(alumno2);
         ad.guardarAlumno(alumno3);
+        ad.guardarAlumno(alumno4);
         
         ////////////////////////////////////////////////////////////////////////MATERIAS
         
@@ -86,6 +88,7 @@ public class Tranversal {
         Cursada cursada11 = new Cursada(alumno,materia2,8);
         Cursada cursada12 = new Cursada(alumno2,materia3,9);
         Cursada cursada13 = new Cursada(alumno3,materia,10);
+        Cursada cursada14 = new Cursada(alumno4, materia2, 10);
         CursadaData cd = new CursadaData(con);
         cd.guardarCursada(cursada);
         cd.guardarCursada(cursada2);
@@ -93,6 +96,7 @@ public class Tranversal {
         cd.guardarCursada(cursada11);
         cd.guardarCursada(cursada12);
         cd.guardarCursada(cursada13);
+        cd.guardarCursada(cursada14);
         
         //System.out.println(ad.buscarAlumno(1).getNombre());
         
@@ -115,6 +119,13 @@ public class Tranversal {
          md.actualizarMateria(materia2);
          
          System.out.println(md.buscarMateria(2).getNombre());*/
+
+        List<Cursada> cursadasAlumno = new ArrayList<>();
+        cursadasAlumno = cd.obtenerCursadasXAlumno(alumno3.getId());
+        System.out.println("Materias cursadas por alumno:");
+        for(Cursada c : cursadasAlumno){
+            System.out.println(c.toString());
+        }
     }
     
 }

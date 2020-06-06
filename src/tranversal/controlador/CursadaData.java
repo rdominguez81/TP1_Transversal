@@ -119,9 +119,9 @@ public class CursadaData
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setInt(1,idAlumno);
             ResultSet resultSet = statement.executeQuery();
-            
-            AlumnoData ad = null;
-            MateriaData md = null;
+
+            AlumnoData ad = new AlumnoData(con);
+            MateriaData md = new MateriaData(con);
             Cursada cursada;
             while(resultSet.next())
             {
