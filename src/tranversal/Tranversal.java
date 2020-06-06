@@ -126,6 +126,13 @@ public class Tranversal {
         for(Cursada c : cursadasAlumno){
             System.out.println(c.toString());
         }
+
+        System.out.println("Alumnos que cursan Matematica:");
+        List<Cursada> cursadasMateria = new ArrayList<>();
+        cursadasMateria = cd.obtenerCursadasMateria(2);
+        for(Cursada c : cursadasMateria){
+            System.out.println(c.toString());
+        }
     }
     
 }

@@ -13,11 +13,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import tranversal.modelo.Alumno;
-
-/**
- *
- * @author alejo
- */
 public class AlumnoData {
     private Connection con;
 
