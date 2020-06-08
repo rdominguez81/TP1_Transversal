@@ -154,7 +154,7 @@ public class CursadaData
 
         try
         {
-            String query = "SELECT materia.id, materia.nombre FROM materia,cursada WHERE (cursada.idMateria = materia.id) AND (cursada.idAlumno = ?)";
+            String query = "SELECT materia.id, materia.nombre FROM materia,cursada WHERE (cursada.idMateria = materia.id) AND (cursada.idAlumno = ?);";
             PreparedStatement statement = con.prepareStatement(query);
             statement.setInt(1,idAlumno);
             ResultSet resultSet = statement.executeQuery();
