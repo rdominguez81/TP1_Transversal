@@ -148,15 +148,15 @@ public class CursadaData
         return cursadas;
     }
 
-    public List<Materia> obtenerMateriasCursadas(int idMateria)
+    public List<Materia> obtenerMateriasCursadas(int idAlumno)
     {
         List<Materia> materias = new ArrayList<Materia>();
 
         try
         {
-            String query = "SELECT * FROM cursada WHERE idMateria = ?";
+            String query = "SELECT materia.id, materia.nombre FROM materia,cursada WHERE (cursada.idMateria = materia.id) AND (cursada.idAlumno = ?)";
             PreparedStatement statement = con.prepareStatement(query);
-            statement.setInt(1,idMateria);
+            statement.setInt(1,idAlumno);
             ResultSet resultSet = statement.executeQuery();
             Materia materia;
             while(resultSet.next())
