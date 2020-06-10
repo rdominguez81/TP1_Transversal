@@ -27,6 +27,8 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
         escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -39,8 +41,12 @@ public class Menu extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
+        jMenu8 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
+
+        jMenuItem7.setText("jMenuItem7");
+
+        jMenu7.setText("jMenu7");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -90,7 +96,7 @@ public class Menu extends javax.swing.JFrame {
 
         jMenu4.setText("Inscripciones");
 
-        jMenuItem4.setText("Modificacion de inscripciones");
+        jMenuItem4.setText("Administrar inscripciones");
         jMenu4.add(jMenuItem4);
 
         jMenuBar1.add(jMenu4);
@@ -102,12 +108,17 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu5);
 
-        jMenu6.setText("Consultas");
+        jMenu8.setText("Consultas");
 
-        jMenuItem6.setText("Listar alumnos por materia");
-        jMenu6.add(jMenuItem6);
+        jMenuItem6.setText("Alumnos por materia");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu8.add(jMenuItem6);
 
-        jMenuBar1.add(jMenu6);
+        jMenuBar1.add(jMenu8);
 
         setJMenuBar(jMenuBar1);
 
@@ -137,6 +148,16 @@ public class Menu extends javax.swing.JFrame {
         escritorio.add(panelAlumnos);
         escritorio.moveToFront(panelAlumnos);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        System.out.println("prueba");
+        escritorio.removeAll();
+        escritorio.repaint();
+        AlumnosPorMateriaView tabla = new AlumnosPorMateriaView();
+        tabla.setVisible(true);
+        escritorio.add(tabla);
+        escritorio.moveToFront(tabla);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,7 +201,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
@@ -188,5 +210,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     // End of variables declaration//GEN-END:variables
 }
