@@ -133,13 +133,6 @@ public class Tranversal {
         for(Cursada c : cursadasMateria){
             System.out.println(c.toString());
         }
-        
-        //pruebas modificacion
-        Alumno alumnoPruebas = new Alumno("hola mundo",LocalDate.of(1995, Month.OCTOBER, 14),true);
-        ad.guardarAlumno(alumnoPruebas);
-        
-        alumnoPruebas.setNombre("aaaa");
-        ad.actualizarAlumno(alumnoPruebas);
     }
     
 }
