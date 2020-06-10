@@ -218,11 +218,12 @@ public class AlumnosView extends javax.swing.JInternalFrame {
 
     private void btModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btModificarActionPerformed
         if(jtIdAlumno.getText() != null){
+            int id = Integer.parseInt(jtIdAlumno.getText());
             String nombre = jtNombreAlumno.getText();
             LocalDate nacimiento =  LocalDate.parse(jtNacimientoAlumno.getText(),DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             boolean activo = jtActivoAlumno.isEnabled();
             
-            Alumno alumnoIngresado = new Alumno(nombre,nacimiento,activo);
+            Alumno alumnoIngresado = new Alumno(id,nombre,nacimiento,activo);
             alumnoData.actualizarAlumno(alumnoIngresado);
         }
     }//GEN-LAST:event_btModificarActionPerformed
