@@ -104,6 +104,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu5.setText("Notas");
 
         jMenuItem5.setText("Cargar notas");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem5);
 
         jMenuBar1.add(jMenu5);
@@ -150,7 +155,6 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        System.out.println("prueba");
         escritorio.removeAll();
         escritorio.repaint();
         AlumnosPorMateriaView tabla = new AlumnosPorMateriaView();
@@ -158,6 +162,16 @@ public class Menu extends javax.swing.JFrame {
         escritorio.add(tabla);
         escritorio.moveToFront(tabla);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        System.out.println("pruebaNotas");
+        escritorio.removeAll();
+        escritorio.repaint();
+        CargarNotasView panelNotas = new CargarNotasView();
+        panelNotas.setVisible(true);
+        escritorio.add(panelNotas);
+        escritorio.moveToFront(panelNotas);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
