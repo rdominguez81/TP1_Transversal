@@ -45,6 +45,8 @@ public class CargarNotasView extends javax.swing.JInternalFrame {
         cursadaData = new CursadaData(con);
         listaCursada = (ArrayList)cursadaData.obtenerCursadas();
         
+        modelo = new DefaultTableModel();
+        
         CargarAlumnos();
         ArmarCabeceraTabla();
         CargarDatosTabla();
