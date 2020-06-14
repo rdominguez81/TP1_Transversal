@@ -191,10 +191,10 @@ public class Menu extends javax.swing.JFrame {
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
-        AlumnosPorMateriaView tabla = new AlumnosPorMateriaView();
-        tabla.setVisible(true);
-        escritorio.add(tabla);
-        escritorio.moveToFront(tabla);
+        AlumnosPorMateriaView tablaAlumnosXMateria = new AlumnosPorMateriaView();
+        tablaAlumnosXMateria.setVisible(true);
+        escritorio.add(tablaAlumnosXMateria);
+        escritorio.moveToFront(tablaAlumnosXMateria);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
@@ -215,7 +215,12 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu4ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        System.out.println("Materias por alumno");
+        escritorio.removeAll();
+        escritorio.repaint();
+        MateriasPorAlumnoView tablaMateriasXAlumno = new MateriasPorAlumnoView();
+        tablaMateriasXAlumno.setVisible(true);
+        escritorio.add(tablaMateriasXAlumno);
+        escritorio.moveToFront(tablaMateriasXAlumno);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed

@@ -23,7 +23,7 @@ public class AlumnosPorMateriaView extends javax.swing.JInternalFrame {
     private Conexion con;
     private ArrayList<Cursada> listaCursada;
     private ArrayList<Materia> listaMaterias;
-    private ArrayList<Alumno> listaALumnos;
+    private ArrayList<Alumno> listaAlumnos;
     private CursadaData cursadaData;
     private MateriaData materiaData;
     private AlumnoData alumnoData;
@@ -41,7 +41,7 @@ public class AlumnosPorMateriaView extends javax.swing.JInternalFrame {
         materiaData = new MateriaData(con);
         listaMaterias = (ArrayList)materiaData.obtenerMaterias();
         alumnoData = new AlumnoData(con);
-        listaALumnos=(ArrayList)alumnoData.obtenerAlumnos();
+        listaAlumnos=(ArrayList)alumnoData.obtenerAlumnos();
         
         cargarDesplegableMaterias();
         armarEncabezadosTabla();
@@ -66,15 +66,13 @@ public class AlumnosPorMateriaView extends javax.swing.JInternalFrame {
         jSeparator2 = new javax.swing.JSeparator();
 
         setClosable(true);
-        setIconifiable(true);
-        setMaximizable(true);
         setTitle("Alumnos por materia");
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Listado de alumnos por materia");
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel2.setText("Materia:");
 
         jCbMaterias.addActionListener(new java.awt.event.ActionListener() {
@@ -108,10 +106,10 @@ public class AlumnosPorMateriaView extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(173, 173, 173)
+                                .addGap(113, 113, 113)
                                 .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCbMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jCbMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
