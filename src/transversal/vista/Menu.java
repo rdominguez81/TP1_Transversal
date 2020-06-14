@@ -50,8 +50,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu7.setText("jMenu7");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema Universidad: Grupo 2");
 
         escritorio.setBackground(new java.awt.Color(0, 189, 204));
+        escritorio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        escritorio.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
@@ -164,8 +167,10 @@ public class Menu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio)
+            .addComponent(escritorio, javax.swing.GroupLayout.Alignment.TRAILING)
         );
+
+        getAccessibleContext().setAccessibleName("Sistema Universidad: Grupo 2");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
