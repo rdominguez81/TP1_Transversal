@@ -6,9 +6,13 @@
 package transversal.vista;
 
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 import tranversal.controlador.AlumnoData;
 import tranversal.controlador.Conexion;
+import tranversal.controlador.CursadaData;
 import tranversal.modelo.Alumno;
+import tranversal.modelo.Cursada;
+//import tranversal.modelo.Materia;
 
 /**
  *
@@ -16,8 +20,11 @@ import tranversal.modelo.Alumno;
  */
 public class MateriasPorAlumnoView extends javax.swing.JInternalFrame {
     private ArrayList<Alumno> listaAlumnos;
+    private ArrayList<Cursada> listaCursada;
     private AlumnoData alumnoData;
     private Conexion con;
+    private DefaultTableModel modelo;
+    private CursadaData cursadaData;
     /**
      * Creates new form MateriasPorAlumnoView
      */
@@ -26,8 +33,28 @@ public class MateriasPorAlumnoView extends javax.swing.JInternalFrame {
         con = new Conexion();
         alumnoData = new AlumnoData(con);
         listaAlumnos=(ArrayList)alumnoData.obtenerAlumnos();
+        modelo = new DefaultTableModel();
+        cursadaData = new CursadaData(con);
         
         cargarDesplegableAlumnos();
+        armarEncabezadosTabla();
+        cargarDatos();
+    }
+    
+    private void borrarFilas(){
+        int cantidadFilas = modelo.getRowCount()-1;
+        for(int i=cantidadFilas; i>=0; i--){
+            modelo.removeRow(i);
+        }
+    }
+    
+    private void cargarDatos(){
+        borrarFilas();
+        Alumno a = (Alumno)jCBAlumnos.getSelectedItem();
+        listaCursada = (ArrayList)cursadaData.obtenerCursadasXAlumno(a.getId());
+        for(Cursada m:listaCursada){
+            modelo.addRow(new Object[]{m.getMateria().getId(),m.getMateria().getNombre(),m.getNota()});
+        }
     }
 
     /**
@@ -44,7 +71,7 @@ public class MateriasPorAlumnoView extends javax.swing.JInternalFrame {
         jCBAlumnos = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTMaterias = new javax.swing.JTable();
         jSeparator2 = new javax.swing.JSeparator();
 
         setClosable(true);
@@ -54,10 +81,16 @@ public class MateriasPorAlumnoView extends javax.swing.JInternalFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Listado de materias por alumno");
 
+        jCBAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBAlumnosActionPerformed(evt);
+            }
+        });
+
         jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel2.setText("Alumno:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTMaterias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -68,7 +101,7 @@ public class MateriasPorAlumnoView extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTMaterias);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -111,10 +144,26 @@ public class MateriasPorAlumnoView extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jCBAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAlumnosActionPerformed
+        cargarDatos();
+    }//GEN-LAST:event_jCBAlumnosActionPerformed
     private void cargarDesplegableAlumnos(){
         for (Alumno al:listaAlumnos) {
             jCBAlumnos.addItem(al);
         }
+    }
+    
+    private void armarEncabezadosTabla(){
+        ArrayList<Object> columnas = new ArrayList<Object>();
+        columnas.add("ID Materia");
+        columnas.add("Nombre");
+        columnas.add("Nota");
+        
+        for(Object columna:columnas){
+            modelo.addColumn(columna);
+        }
+        jTMaterias.setModel(modelo);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -124,6 +173,6 @@ public class MateriasPorAlumnoView extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTMaterias;
     // End of variables declaration//GEN-END:variables
 }
