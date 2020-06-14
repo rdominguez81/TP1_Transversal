@@ -36,6 +36,8 @@ public class CargarNotasView extends javax.swing.JInternalFrame {
         
         con = new Conexion();
         
+        modelo = new DefaultTableModel();
+        
         alumnoData = new AlumnoData(con);
         listaAlumnos = (ArrayList)alumnoData.obtenerAlumnos();
         
