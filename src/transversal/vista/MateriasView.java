@@ -183,6 +183,7 @@ public class MateriasView extends javax.swing.JInternalFrame {
             String nombre = jtNombreMateria.getText();
             int id = Integer.parseInt(jtIdMateria.getText());
             Materia materia = new Materia(nombre);
+            materia.setId(id);
             materiaData.actualizarMateria(materia);
         }
     }//GEN-LAST:event_btModificarActionPerformed
