@@ -99,7 +99,7 @@ public class Tranversal {
         cd.guardarCursada(cursada14);
         
         //System.out.println(ad.buscarAlumno(1).getNombre());
-        
+        System.out.println("//////////////////////////////////PRUEBA obtenerCursadas()");
         List<Cursada> cursadas = new ArrayList<Cursada>();  
         
         cursadas = cd.obtenerCursadas();
@@ -109,8 +109,9 @@ public class Tranversal {
         while(it.hasNext())
         {
             cursadaTemp = (Cursada)it.next();
-            System.out.println(cursadaTemp.toString());
+            System.out.println(cursadaTemp.getAlumno().getNombre()+" // "+ cursadaTemp.getMateria().getNombre()+" // "+ cursadaTemp.getNota());
         }
+        System.out.println("//////////////////////////////////FIN PRUEBA obtenerCursadas()");
         /*
          md.borrarMateria(1);
          
