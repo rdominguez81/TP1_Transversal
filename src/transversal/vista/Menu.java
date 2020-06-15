@@ -235,6 +235,12 @@ public class Menu extends javax.swing.JFrame {
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         System.out.println("Inscripciones (Alta y baja de Cursadas)");
+        escritorio.removeAll();
+        escritorio.repaint();
+        CursadasView cursadasView = new CursadasView();
+        cursadasView.setVisible(true);
+        escritorio.add(cursadasView);
+        escritorio.moveToFront(cursadasView);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**

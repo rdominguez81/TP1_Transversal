@@ -108,6 +108,34 @@ public class CursadaData
 
         return cursadas;
     }
+    
+    //AGREGADA PARA PRUEBAS EN VISTAS, NO BORRAR
+    /*public Cursada obtenerCursada(int idA, int idM){
+        Cursada cursada = new Cursada();
+        
+        MateriaData md = new MateriaData(con);
+        AlumnoData ad = new AlumnoData(con);
+        
+        try {
+            String sql = "SELECT * FROM cursada WHERE idAlumno = " + idA + " AND idMateria = " + idM + ";";
+            
+            PreparedStatement statement = con.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+            
+            //while(resultSet.next())
+            //{
+                cursada.setId(resultSet.getInt("id"));
+                cursada.setMateria(md.buscarMateria(resultSet.getInt("idMateria")));
+                cursada.setAlumno(ad.buscarAlumno(resultSet.getInt("idAlumno")));
+                cursada.setNota(resultSet.getInt("nota"));
+            //}      
+            statement.close();   
+            
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener la cursada: " + ex.getMessage());
+        }
+        return cursada;
+    }*/
 
     public List<Cursada> obtenerCursadasXAlumno(int idAlumno)
     {

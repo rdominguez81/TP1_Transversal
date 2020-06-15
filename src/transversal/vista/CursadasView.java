@@ -5,17 +5,80 @@
  */
 package transversal.vista;
 
+import java.util.ArrayList;
+import tranversal.controlador.AlumnoData;
+import tranversal.controlador.Conexion;
+import tranversal.controlador.CursadaData;
+import tranversal.controlador.MateriaData;
+import tranversal.modelo.Alumno;
+import tranversal.modelo.Cursada;
+import tranversal.modelo.Materia;
+
 /**
  *
  * @author Arezlon
  */
 public class CursadasView extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form CursadasView
-     */
+    private ArrayList<Cursada> listaCursadas;
+    private ArrayList<Materia> listaMaterias;
+    private ArrayList<Alumno> listaAlumnos;
+    private CursadaData cursadaData;
+    private MateriaData materiaData;
+    private AlumnoData alumnoData;
+    private Conexion con;
+    
     public CursadasView() {
         initComponents();
+        con = new Conexion();
+        cursadaData = new CursadaData(con);
+        materiaData = new MateriaData(con);
+        //listaMaterias = (ArrayList)materiaData.obtenerMaterias();
+        alumnoData = new AlumnoData(con);
+        listaAlumnos=(ArrayList)alumnoData.obtenerAlumnos();
+        llenarAlumnos();
+        llenarMaterias();
+    }
+    
+    private void llenarAlumnos(){
+        for (Alumno a : listaAlumnos) {
+            jCAlumnos.addItem(a);
+        }
+    }
+    
+    private void llenarMaterias(){
+        listaMaterias = (ArrayList)cursadaData.obtenerMateriasNOCursadas(((Alumno)jCAlumnos.getSelectedItem()).getId());
+        
+        if(listaMaterias.isEmpty()){
+            jBAlta.setEnabled(false);
+        }else{
+            jBAlta.setEnabled(true);
+        }
+        
+        for (Materia m : listaMaterias) {
+            jCMaterias.addItem(m);
+        }
+    }
+    
+    private void llenarCursadas(){
+        listaCursadas = (ArrayList)cursadaData.obtenerCursadasXAlumno(((Alumno)jCAlumnos.getSelectedItem()).getId());
+        
+        if(listaCursadas.isEmpty()){
+            jBBaja.setEnabled(false);
+        }else{
+            jBBaja.setEnabled(true);
+        }
+        
+        for (Cursada c : listaCursadas) {
+            jCCursadas.addItem(c);
+        }
+    }
+    
+    private void recargarDesplegables(){
+        jCCursadas.removeAllItems();
+        jCMaterias.removeAllItems();
+        llenarMaterias();
+        llenarCursadas();
     }
 
     /**
@@ -27,21 +90,154 @@ public class CursadasView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jCAlumnos = new javax.swing.JComboBox<>();
+        jCMaterias = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jBAlta = new javax.swing.JButton();
+        jBBaja = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
+        jCCursadas = new javax.swing.JComboBox<>();
+        jSeparator2 = new javax.swing.JSeparator();
+
+        setClosable(true);
+        setTitle("Administracion de Cursadas");
+
+        jCAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCAlumnosActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel3.setText("Alumno:");
+
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel4.setText("Materia:");
+
+        jBAlta.setText("Inscribir");
+        jBAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAltaActionPerformed(evt);
+            }
+        });
+
+        jBBaja.setText("Des-Inscribir");
+        jBBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBajaActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel1.setText("Cursada:");
+
+        jCCursadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCCursadasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(90, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(jCAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(88, 88, 88))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jCMaterias, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCCursadas, 0, 147, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jBBaja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBAlta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jCAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jCMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBAlta))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBBaja)
+                    .addComponent(jLabel1)
+                    .addComponent(jCCursadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jBAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAltaActionPerformed
+        //ALTA DE CURSADA
+        Materia materiaInscripcion = (Materia)jCMaterias.getSelectedItem();
+        Alumno alumnoInscripcion = (Alumno)jCAlumnos.getSelectedItem(); 
+        
+        Cursada inscripcion = new Cursada(alumnoInscripcion, materiaInscripcion, 0); //IMPORTANTE: ver o preguntar que hacer con la nota
+        cursadaData.guardarCursada(inscripcion);
+        
+        recargarDesplegables();
+    }//GEN-LAST:event_jBAltaActionPerformed
+
+    private void jCAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCAlumnosActionPerformed
+        recargarDesplegables();
+    }//GEN-LAST:event_jCAlumnosActionPerformed
+
+    private void jBBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBajaActionPerformed
+        //BAJA DE CURSADA
+        Cursada cursadaBaja = (Cursada)jCCursadas.getSelectedItem();
+        Alumno alumnoSeleccionado = (Alumno)jCAlumnos.getSelectedItem();
+        
+        cursadaData.borrarCursadaDeUnaMateriaDeunAlumno(alumnoSeleccionado.getId(),cursadaBaja.getMateria().getId());
+        recargarDesplegables();
+    }//GEN-LAST:event_jBBajaActionPerformed
+
+    private void jCCursadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCCursadasActionPerformed
+        //jBBaja.setEnabled(true);
+        jCCursadas.removeAllItems();
+        llenarCursadas();
+    }//GEN-LAST:event_jCCursadasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBAlta;
+    private javax.swing.JButton jBBaja;
+    private javax.swing.JComboBox<Alumno> jCAlumnos;
+    private javax.swing.JComboBox<Cursada> jCCursadas;
+    private javax.swing.JComboBox<Materia> jCMaterias;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
 }

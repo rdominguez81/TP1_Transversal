@@ -5,7 +5,7 @@
  */
 package transversal.vista;
 
-import com.oracle.webservices.internal.api.databinding.DatabindingModeFeature;
+//import com.oracle.webservices.internal.api.databinding.DatabindingModeFeature; //LO COMENTE PORQUE ME DA ERROR
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;

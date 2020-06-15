@@ -72,8 +72,8 @@ public class Cursada
         this.nota = nota;
     }
     
-//    public String toString()
-//    {
-//        return "Alumno: "+this.alumno.getNombre()+" -> Materia: "+this.materia.getNombre(); 
-//    }
+    public String toString()
+   {
+        return this.materia.getNombre(); 
+    }
 }
