@@ -69,12 +69,17 @@ public class CargarNotasView extends javax.swing.JInternalFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        cbAlumno = new javax.swing.JComboBox<>();
+        cbAlumno = new javax.swing.JComboBox<Alumno>();
         jbGuardar = new javax.swing.JButton();
         jbCancelar = new javax.swing.JButton();
         jbLimpiar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtNotas = new javax.swing.JTable();
+
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel1.setText("Carga de Notas");
