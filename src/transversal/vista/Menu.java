@@ -225,6 +225,12 @@ public class Menu extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         System.out.println("Materias view (ABM)");
+        escritorio.removeAll();
+        escritorio.repaint();
+        MateriasView materiasView = new MateriasView();
+        materiasView.setVisible(true);
+        escritorio.add(materiasView);
+        escritorio.moveToFront(materiasView);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
