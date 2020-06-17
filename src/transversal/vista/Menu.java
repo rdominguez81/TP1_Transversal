@@ -222,7 +222,6 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        System.out.println("Materias view (ABM)");
         escritorio.removeAll();
         escritorio.repaint();
         MateriasView materiasView = new MateriasView();
@@ -232,7 +231,6 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        System.out.println("Inscripciones (Alta y baja de Cursadas)");
         escritorio.removeAll();
         escritorio.repaint();
         CursadasView cursadasView = new CursadasView();

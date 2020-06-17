@@ -61,8 +61,7 @@ public class CursadasView extends javax.swing.JInternalFrame {
     }
     
     private void llenarCursadas(){
-        int id = ((Alumno)jCAlumnos.getSelectedItem()).getId();
-        System.out.println(id);
+        //int id = ((Alumno)jCAlumnos.getSelectedItem()).getId();
         listaCursadas = (ArrayList)cursadaData.obtenerCursadasXAlumno(((Alumno)jCAlumnos.getSelectedItem()).getId());
        
         if(listaCursadas.isEmpty()){

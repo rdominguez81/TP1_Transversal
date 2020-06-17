@@ -6,6 +6,7 @@
 package transversal.vista;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import tranversal.controlador.AlumnoData;
 import tranversal.controlador.Conexion;
 import tranversal.modelo.Alumno;
@@ -16,6 +17,7 @@ import tranversal.modelo.Alumno;
 public class AlumnosView extends javax.swing.JInternalFrame {
     private AlumnoData alumnoData;
     private Conexion con;
+    private ArrayList<Alumno> listaAlumnos;
     
     /**
      * Creates new form AlumnosView
@@ -24,6 +26,8 @@ public class AlumnosView extends javax.swing.JInternalFrame {
         initComponents();
         con = new Conexion();
         alumnoData = new AlumnoData(con);
+        
+        cargarDesplegableAlumnos();
     }
 
     /**
@@ -35,6 +39,7 @@ public class AlumnosView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jSeparator3 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -51,6 +56,9 @@ public class AlumnosView extends javax.swing.JInternalFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
+        jCAlumnos = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JSeparator();
 
         setClosable(true);
         setIconifiable(true);
@@ -121,6 +129,15 @@ public class AlumnosView extends javax.swing.JInternalFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Alumnos");
 
+        jCAlumnos.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCAlumnosItemStateChanged(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel1.setText("Alumnos");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -140,27 +157,37 @@ public class AlumnosView extends javax.swing.JInternalFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator4)
                             .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jSeparator1)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 37, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5))
-                                .addGap(10, 10, 10)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtActivoAlumno)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jtIdAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(btBuscar))
-                                        .addComponent(jtNacimientoAlumno, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jtNombreAlumno, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(56, 56, 56))
-                            .addComponent(jSeparator1))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel4)
+                                            .addComponent(jLabel5))
+                                        .addGap(35, 35, 35)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jtNacimientoAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jtActivoAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel1)
+                                            .addComponent(jLabel2))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jtIdAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(btBuscar))
+                                            .addComponent(jCAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(55, 55, 55)
+                                        .addComponent(jtNombreAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(39, 39, 39)))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -168,13 +195,19 @@ public class AlumnosView extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(1, 1, 1)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
                     .addComponent(jtIdAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btBuscar))
+                    .addComponent(btBuscar)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(16, 16, 16)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -187,15 +220,15 @@ public class AlumnosView extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jtActivoAlumno)
                     .addComponent(jLabel5))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btGuardar)
                     .addComponent(btBorrar)
                     .addComponent(btModificar)
                     .addComponent(btLimpiar))
-                .addContainerGap())
+                .addGap(18, 18, 18))
         );
 
         pack();
@@ -210,7 +243,6 @@ public class AlumnosView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtActivoAlumnoActionPerformed
 
     private void btGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGuardarActionPerformed
-        //ARREGLAR LOS NOMBRES DE LAS VARIABLES
         String nombre = jtNombreAlumno.getText();
         LocalDate nacimiento =  LocalDate.parse(jtNacimientoAlumno.getText(),DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         boolean activo = jtActivoAlumno.isEnabled();
@@ -219,7 +251,14 @@ public class AlumnosView extends javax.swing.JInternalFrame {
         alumnoData.guardarAlumno(alumnoIngresado);
         jtIdAlumno.setText(alumnoIngresado.getId()+"");
     }//GEN-LAST:event_btGuardarActionPerformed
-
+    
+    private void cargarDesplegableAlumnos(){
+        listaAlumnos=(ArrayList)alumnoData.obtenerAlumnos();
+        for (Alumno al:listaAlumnos) {
+            jCAlumnos.addItem(al);
+        }
+    }
+    
     private void btBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBorrarActionPerformed
         int id = Integer.parseInt(jtIdAlumno.getText());
         alumnoData.borrarAlumno(id);
@@ -234,6 +273,9 @@ public class AlumnosView extends javax.swing.JInternalFrame {
             
             Alumno alumnoIngresado = new Alumno(id,nombre,nacimiento,activo);
             alumnoData.actualizarAlumno(alumnoIngresado);
+            
+            //jCAlumnos.removeAllItems();
+            cargarDesplegableAlumnos();
         }
     }//GEN-LAST:event_btModificarActionPerformed
 
@@ -256,6 +298,15 @@ public class AlumnosView extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btBuscarActionPerformed
 
+    private void jCAlumnosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCAlumnosItemStateChanged
+        Alumno a = (Alumno)jCAlumnos.getSelectedItem();
+        
+        jtIdAlumno.setText(a.getId()+"");
+        jtNombreAlumno.setText(a.getNombre());
+        jtNacimientoAlumno.setText(a.getFecNac().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        jtActivoAlumno.setSelected(a.getActivo());
+    }//GEN-LAST:event_jCAlumnosItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBorrar;
@@ -263,6 +314,8 @@ public class AlumnosView extends javax.swing.JInternalFrame {
     private javax.swing.JButton btGuardar;
     private javax.swing.JButton btLimpiar;
     private javax.swing.JButton btModificar;
+    private javax.swing.JComboBox<Alumno> jCAlumnos;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -270,6 +323,8 @@ public class AlumnosView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JCheckBox jtActivoAlumno;
     private javax.swing.JTextField jtIdAlumno;
     private javax.swing.JTextField jtNacimientoAlumno;
