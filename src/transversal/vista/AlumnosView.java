@@ -253,6 +253,7 @@ public class AlumnosView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btGuardarActionPerformed
     
     private void cargarDesplegableAlumnos(){
+        jCAlumnos.removeAllItems();
         listaAlumnos=(ArrayList)alumnoData.obtenerAlumnos();
         for (Alumno al:listaAlumnos) {
             jCAlumnos.addItem(al);
@@ -274,7 +275,6 @@ public class AlumnosView extends javax.swing.JInternalFrame {
             Alumno alumnoIngresado = new Alumno(id,nombre,nacimiento,activo);
             alumnoData.actualizarAlumno(alumnoIngresado);
             
-            //jCAlumnos.removeAllItems();
             cargarDesplegableAlumnos();
         }
     }//GEN-LAST:event_btModificarActionPerformed
@@ -301,10 +301,13 @@ public class AlumnosView extends javax.swing.JInternalFrame {
     private void jCAlumnosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCAlumnosItemStateChanged
         Alumno a = (Alumno)jCAlumnos.getSelectedItem();
         
-        jtIdAlumno.setText(a.getId()+"");
-        jtNombreAlumno.setText(a.getNombre());
-        jtNacimientoAlumno.setText(a.getFecNac().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-        jtActivoAlumno.setSelected(a.getActivo());
+        if(a != null){
+            jtIdAlumno.setText(a.getId()+"");
+            jtNombreAlumno.setText(a.getNombre());
+            jtNacimientoAlumno.setText(a.getFecNac().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+            jtActivoAlumno.setSelected(a.getActivo());
+        }
+        
     }//GEN-LAST:event_jCAlumnosItemStateChanged
 
 
