@@ -66,6 +66,8 @@ public class AlumnosPorMateriaView extends javax.swing.JInternalFrame {
         jSeparator2 = new javax.swing.JSeparator();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Alumnos por materia");
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N

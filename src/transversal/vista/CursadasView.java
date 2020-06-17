@@ -61,8 +61,10 @@ public class CursadasView extends javax.swing.JInternalFrame {
     }
     
     private void llenarCursadas(){
+        int id = ((Alumno)jCAlumnos.getSelectedItem()).getId();
+        System.out.println(id);
         listaCursadas = (ArrayList)cursadaData.obtenerCursadasXAlumno(((Alumno)jCAlumnos.getSelectedItem()).getId());
-        
+       
         if(listaCursadas.isEmpty()){
             jBBaja.setEnabled(false);
         }else{
@@ -102,8 +104,15 @@ public class CursadasView extends javax.swing.JInternalFrame {
         jSeparator2 = new javax.swing.JSeparator();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Administracion de Cursadas");
 
+        jCAlumnos.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCAlumnosItemStateChanged(evt);
+            }
+        });
         jCAlumnos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCAlumnosActionPerformed(evt);
@@ -202,7 +211,7 @@ public class CursadasView extends javax.swing.JInternalFrame {
         Materia materiaInscripcion = (Materia)jCMaterias.getSelectedItem();
         Alumno alumnoInscripcion = (Alumno)jCAlumnos.getSelectedItem(); 
         
-        Cursada inscripcion = new Cursada(alumnoInscripcion, materiaInscripcion, 0); //IMPORTANTE: ver o preguntar que hacer con la nota
+        Cursada inscripcion = new Cursada(alumnoInscripcion, materiaInscripcion, 0);
         cursadaData.guardarCursada(inscripcion);
         
         recargarDesplegables();
@@ -222,10 +231,13 @@ public class CursadasView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBBajaActionPerformed
 
     private void jCCursadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCCursadasActionPerformed
-        //jBBaja.setEnabled(true);
+        
+    }//GEN-LAST:event_jCCursadasActionPerformed
+
+    private void jCAlumnosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCAlumnosItemStateChanged
         jCCursadas.removeAllItems();
         llenarCursadas();
-    }//GEN-LAST:event_jCCursadasActionPerformed
+    }//GEN-LAST:event_jCAlumnosItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -75,6 +75,8 @@ public class MateriasPorAlumnoView extends javax.swing.JInternalFrame {
         jSeparator2 = new javax.swing.JSeparator();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Materias por alumno");
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N

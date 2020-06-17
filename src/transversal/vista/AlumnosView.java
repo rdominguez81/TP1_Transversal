@@ -53,6 +53,8 @@ public class AlumnosView extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Administracion del Alumnos");
         setToolTipText("");
 
