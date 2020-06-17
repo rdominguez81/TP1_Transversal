@@ -55,7 +55,7 @@ public class AlumnosView extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Administracion del Alumnos");
+        setTitle("Administracion de Alumnos");
         setToolTipText("");
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
