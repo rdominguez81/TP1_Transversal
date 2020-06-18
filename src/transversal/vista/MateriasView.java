@@ -231,6 +231,10 @@ public class MateriasView extends javax.swing.JInternalFrame {
         Color colorExito = new Color(7, 110, 46);
         jLAlerta.setText("Materia "+jtNombreMateria.getText()+" eliminada correctamente");
         jLAlerta.setForeground(colorExito);
+        
+        jtIdMateria.setText("");
+        jtNombreMateria.setText("");
+        cargarDesplegableMaterias();
     }//GEN-LAST:event_btBorrarActionPerformed
 
     private void btModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btModificarActionPerformed

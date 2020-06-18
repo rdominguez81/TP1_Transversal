@@ -269,6 +269,7 @@ public class AlumnosView extends javax.swing.JInternalFrame {
         jLAlerta.setText("Alumno "+jtNombreAlumno.getText()+" eliminado correctamente");
         jLAlerta.setForeground(colorExito);
         alumnoData.borrarAlumno(id);
+        limpiar();
         cargarDesplegableAlumnos();
     }//GEN-LAST:event_btBorrarActionPerformed
 
@@ -290,12 +291,15 @@ public class AlumnosView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btModificarActionPerformed
 
     private void btLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimpiarActionPerformed
+        limpiar();
+    }//GEN-LAST:event_btLimpiarActionPerformed
+
+    private void limpiar(){
         jtIdAlumno.setText("");
         jtNombreAlumno.setText("");
         jtNacimientoAlumno.setText("");
         jtActivoAlumno.setEnabled(false);
-    }//GEN-LAST:event_btLimpiarActionPerformed
-
+    }
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
         int id = Integer.parseInt(jtIdAlumno.getText());
         Alumno busquedaAlumno = alumnoData.buscarAlumno(id);
