@@ -220,7 +220,6 @@ public class CargarNotasView extends javax.swing.JInternalFrame {
         }
     }
     
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCancelar;
