@@ -52,9 +52,6 @@ public class CargarNotasView extends javax.swing.JInternalFrame {
         modelo = new DefaultTableModel();
         
         CargarAlumnos();
-        ArmarCabeceraTabla();
-        CargarDatosTabla();
-        BorrarFilasTabla();
         
     }
 
@@ -69,27 +66,27 @@ public class CargarNotasView extends javax.swing.JInternalFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        cbAlumno = new javax.swing.JComboBox<>();
+        jCAlumnos = new javax.swing.JComboBox<>();
         jbGuardar = new javax.swing.JButton();
-        jbCancelar = new javax.swing.JButton();
-        jbLimpiar = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jtNotas = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
+        jCMaterias = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        jTNotaAlumno = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel1.setText("Carga de Notas");
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel2.setText("Alumno");
 
-        cbAlumno.addActionListener(new java.awt.event.ActionListener() {
+        jCAlumnos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbAlumnoActionPerformed(evt);
+                jCAlumnosActionPerformed(evt);
             }
         });
 
@@ -100,43 +97,17 @@ public class CargarNotasView extends javax.swing.JInternalFrame {
             }
         });
 
-        jbCancelar.setText("Cancelar");
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel4.setText("Materia:");
 
-        jbLimpiar.setText("Limpiar");
-        jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel5.setText("Nota:");
+
+        jTNotaAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbLimpiarActionPerformed(evt);
+                jTNotaAlumnoActionPerformed(evt);
             }
         });
-
-        jtNotas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "ID", "Nombre", "Notas"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(jtNotas);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -144,26 +115,26 @@ public class CargarNotasView extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(97, 97, 97)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbAlumno, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(79, 79, 79))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCAlumnos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(79, 79, 79))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTNotaAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbGuardar))
+                        .addContainerGap(34, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(61, Short.MAX_VALUE)
-                .addComponent(jbGuardar)
-                .addGap(18, 18, 18)
-                .addComponent(jbCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jbLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(145, 145, 145)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(109, 109, 109))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,96 +142,74 @@ public class CargarNotasView extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbCancelar)
-                    .addComponent(jbLimpiar)
-                    .addComponent(jbGuardar))
-                .addGap(15, 15, 15))
+                    .addComponent(jLabel4)
+                    .addComponent(jCMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jTNotaAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(jbGuardar)
+                .addGap(25, 25, 25))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cbAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAlumnoActionPerformed
-        CargarDatosTabla();
-    }//GEN-LAST:event_cbAlumnoActionPerformed
+    private void jCAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCAlumnosActionPerformed
+        RecargarDesplegables();
+    }//GEN-LAST:event_jCAlumnosActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+        int nota = Integer.parseInt(jTNotaAlumno.getText());
         
-        //FALTA TERMINAR
-        /* 
-        TableModel tabla = jtNotas.getModel();
-        int columna = jtNotas.getSelectedColumn();
-        int fila = jtNotas.getSelectedRow();
+        Alumno alumno = ((Alumno)jCAlumnos.getSelectedItem()); 
+        Materia materia = ((Materia)jCMaterias.getSelectedItem());
         
-        Object nota = tabla.getValueAt(columna, fila);
-        
-        int idMateria = jtNotas.getSelectedColumn();
-        
-        Cursada cursada = new Cursada();
-        cursadaData.actualizarNotaCursada(idAlumno, idMateria, nota);
-        */
+        Cursada cursada = new Cursada(alumno, materia, nota);
+        cursadaData.actualizarNotaCursada(alumno.getId(), materia.getId(), nota);
     }//GEN-LAST:event_jbGuardarActionPerformed
 
-    private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
-        BorrarFilasTabla();
-    }//GEN-LAST:event_jbLimpiarActionPerformed
+    private void jTNotaAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTNotaAlumnoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTNotaAlumnoActionPerformed
 
     private void CargarAlumnos()
     {
         for(Alumno alumno : listaAlumnos){
-            cbAlumno.addItem(alumno);
+            jCAlumnos.addItem(alumno);
         }
     }
-    private void ArmarCabeceraTabla()
+    private void CargarMaterias()
     {
-        ArrayList<Object> columnas = new ArrayList();
+        listaMaterias = (ArrayList)cursadaData.obtenerMateriasCursadas(((Alumno)jCAlumnos.getSelectedItem()).getId());
         
-        columnas.add("ID");
-        columnas.add("Nombre");
-        columnas.add("Nota");
-        
-        for(Object it : columnas)
-            modelo.addColumn(it);
-       
-        jtNotas.setModel(modelo);
-    }
-    private void BorrarFilasTabla()
-    {
-        int a = modelo.getRowCount()-1;
-        for(int i = a; i >= 0; i--)
-            modelo.removeRow(i);
-    }
-    private void CargarDatosTabla()
-    {
-        BorrarFilasTabla();
-        
-        Alumno alumno = (Alumno)cbAlumno.getSelectedItem();
-        
-        for(Cursada cursada : listaCursada){
-            if(cursada.getAlumno().getId()==alumno.getId()){
-                modelo.addRow(new Object[]{
-                    cursada.getAlumno().getId(),
-                    cursada.getMateria(),
-                    cursada.getNota()});
-            }
+        for (Materia m : listaMaterias) {
+            jCMaterias.addItem(m);
         }
+    }
+    private void CargarNota()
+    {
+
     }
     
+    private void RecargarDesplegables(){
+        jCMaterias.removeAllItems();
+        CargarMaterias();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<Alumno> cbAlumno;
+    private javax.swing.JComboBox<Alumno> jCAlumnos;
+    private javax.swing.JComboBox<Materia> jCMaterias;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JButton jbCancelar;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JTextField jTNotaAlumno;
     private javax.swing.JButton jbGuardar;
-    private javax.swing.JButton jbLimpiar;
-    private javax.swing.JTable jtNotas;
     // End of variables declaration//GEN-END:variables
 }
