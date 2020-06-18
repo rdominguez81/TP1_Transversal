@@ -5,7 +5,9 @@
  */
 package transversal.vista;
 
+import java.awt.Color;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import tranversal.controlador.AlumnoData;
 import tranversal.controlador.Conexion;
 import tranversal.controlador.CursadaData;
@@ -38,6 +40,7 @@ public class CursadasView extends javax.swing.JInternalFrame {
         listaAlumnos=(ArrayList)alumnoData.obtenerAlumnos();
         llenarAlumnos();
         llenarMaterias();
+        
     }
     
     private void llenarAlumnos(){
@@ -47,6 +50,7 @@ public class CursadasView extends javax.swing.JInternalFrame {
     }
     
     private void llenarMaterias(){
+    
         listaMaterias = (ArrayList)cursadaData.obtenerMateriasNOCursadas(((Alumno)jCAlumnos.getSelectedItem()).getId());
         
         if(listaMaterias.isEmpty()){
@@ -54,10 +58,12 @@ public class CursadasView extends javax.swing.JInternalFrame {
         }else{
             jBAlta.setEnabled(true);
         }
-        
+
         for (Materia m : listaMaterias) {
             jCMaterias.addItem(m);
         }
+     
+        
     }
     
     private void llenarCursadas(){
@@ -101,6 +107,7 @@ public class CursadasView extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jCCursadas = new javax.swing.JComboBox<>();
         jSeparator2 = new javax.swing.JSeparator();
+        jLAlerta = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -147,6 +154,9 @@ public class CursadasView extends javax.swing.JInternalFrame {
             }
         });
 
+        jLAlerta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLAlerta.setText(" ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -175,7 +185,8 @@ public class CursadasView extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator1)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLAlerta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -199,7 +210,9 @@ public class CursadasView extends javax.swing.JInternalFrame {
                     .addComponent(jCCursadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLAlerta)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
@@ -212,6 +225,10 @@ public class CursadasView extends javax.swing.JInternalFrame {
         
         Cursada inscripcion = new Cursada(alumnoInscripcion, materiaInscripcion, 0);
         cursadaData.guardarCursada(inscripcion);
+        
+        Color colorExito = new Color(7, 110, 46);
+        jLAlerta.setText("Alumno "+alumnoInscripcion.getNombre()+" inscripto en "+materiaInscripcion.getNombre());
+        jLAlerta.setForeground(colorExito);
         
         recargarDesplegables();
     }//GEN-LAST:event_jBAltaActionPerformed
@@ -227,6 +244,10 @@ public class CursadasView extends javax.swing.JInternalFrame {
         
         cursadaData.borrarCursadaDeUnaMateriaDeunAlumno(alumnoSeleccionado.getId(),cursadaBaja.getMateria().getId());
         recargarDesplegables();
+        
+        Color colorExito = new Color(7, 110, 46);
+        jLAlerta.setText("Se eliminó la cursada de "+alumnoSeleccionado.getNombre()+" en "+cursadaBaja.getMateria().getNombre());
+        jLAlerta.setForeground(colorExito);
     }//GEN-LAST:event_jBBajaActionPerformed
 
     private void jCCursadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCCursadasActionPerformed
@@ -245,6 +266,7 @@ public class CursadasView extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<Alumno> jCAlumnos;
     private javax.swing.JComboBox<Cursada> jCCursadas;
     private javax.swing.JComboBox<Materia> jCMaterias;
+    private javax.swing.JLabel jLAlerta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

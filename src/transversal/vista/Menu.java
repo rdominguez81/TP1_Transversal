@@ -5,12 +5,18 @@
  */
 package transversal.vista;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import tranversal.controlador.AlumnoData;
+import tranversal.controlador.Conexion;
+import tranversal.modelo.Alumno;
+
 /**
  *
  * @author Arezlon
  */
 public class Menu extends javax.swing.JFrame {
-
+     private ArrayList<Alumno> listaAlumnos;
     /**
      * Creates new form Menu
      */
@@ -231,12 +237,22 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        escritorio.removeAll();
-        escritorio.repaint();
-        CursadasView cursadasView = new CursadasView();
-        cursadasView.setVisible(true);
-        escritorio.add(cursadasView);
-        escritorio.moveToFront(cursadasView);
+        
+        Conexion con = new Conexion();
+        AlumnoData alumnoData = new AlumnoData(con);
+        listaAlumnos=(ArrayList)alumnoData.obtenerAlumnos();
+        
+        if(listaAlumnos.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Esta ventana no se puede abrir si no hay alumnos.","Error al cargar la ventana",JOptionPane.ERROR_MESSAGE);
+        }else{
+            escritorio.removeAll();
+            escritorio.repaint();
+            CursadasView cursadasView = new CursadasView();
+            cursadasView.setVisible(true);
+            escritorio.add(cursadasView);
+            escritorio.moveToFront(cursadasView);
+        }
+        
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
