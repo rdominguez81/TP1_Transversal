@@ -298,7 +298,7 @@ public class AlumnosView extends javax.swing.JInternalFrame {
         jtIdAlumno.setText("");
         jtNombreAlumno.setText("");
         jtNacimientoAlumno.setText("");
-        jtActivoAlumno.setEnabled(false);
+        //jtActivoAlumno.setEnabled(false);
     }
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
         int id = Integer.parseInt(jtIdAlumno.getText());

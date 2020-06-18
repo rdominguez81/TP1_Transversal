@@ -222,6 +222,8 @@ public class MateriasView extends javax.swing.JInternalFrame {
         Color colorExito = new Color(7, 110, 46);
         jLAlerta.setText("Materia "+jtNombreMateria.getText()+" creada correctamente");
         jLAlerta.setForeground(colorExito);
+        jCMaterias.addItem(materia);
+        jCMaterias.setSelectedItem(materia);
     }//GEN-LAST:event_btGuardarActionPerformed
 
     private void btBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBorrarActionPerformed
@@ -245,11 +247,14 @@ public class MateriasView extends javax.swing.JInternalFrame {
             Materia materia = new Materia(nombre);
             materia.setId(id);
             materiaData.actualizarMateria(materia);
-            cargarDesplegableMaterias();
-            
             Color colorExito = new Color(7, 110, 46);
             jLAlerta.setText("Materia "+jtNombreMateria.getText()+" modificada correctamente");
             jLAlerta.setForeground(colorExito);
+            int i = jCMaterias.getSelectedIndex();
+            cargarDesplegableMaterias();
+            jCMaterias.setSelectedIndex(i);
+            
+
         }
     }//GEN-LAST:event_btModificarActionPerformed
 
