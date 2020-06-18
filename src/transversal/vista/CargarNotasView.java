@@ -194,7 +194,7 @@ public class CargarNotasView extends javax.swing.JInternalFrame {
     }
     private void CargarNota()
     {
-
+        listaCursada = (ArrayList)cursadaData.obtenerCursadasXAlumno(((Alumno)jCAlumnos.getSelectedItem()).getId());
     }
     
     private void RecargarDesplegables(){
