@@ -106,6 +106,11 @@ public class CargarNotasView extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTAlumnos);
 
         jBCancelar.setText("Cancelar");
+        jBCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -159,6 +164,11 @@ public class CargarNotasView extends javax.swing.JInternalFrame {
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         actualizarNota();
     }//GEN-LAST:event_jBGuardarActionPerformed
+
+    private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
+        // TODO add your handling code here:
+        borrarFilasTabla();
+    }//GEN-LAST:event_jBCancelarActionPerformed
 
     private void cargarCbAlumnos()
     {
